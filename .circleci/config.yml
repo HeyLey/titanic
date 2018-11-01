@@ -29,5 +29,5 @@ jobs:
           paths:
             - "venv"
       - store_artifacts: 
-          path: ~/titanic/titanic.html
-          destination: titanic.html
+          path: ~/titanic/titanic_kernel.html
+          destination: titanic_kernel.html
