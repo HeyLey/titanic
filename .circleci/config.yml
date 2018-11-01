@@ -24,6 +24,8 @@ jobs:
             mv kaggle.json .kaggle
             sh get_data.sh
             jupyter nbconvert --ExecutePreprocessor.timeout=2000 --ExecutePreprocessor.kernel_name=python3 --execute titanic_kernel.ipynb
+            sh submit.sh
+            sh get_html.sh
           paths:
             - "venv"
       - store_artifacts: 
