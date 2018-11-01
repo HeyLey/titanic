@@ -22,6 +22,5 @@ COPY data/test.csv /${HOME}
 COPY data/train.csv /${HOME}
 
 RUN pip3 install --no-cache -r requirements.txt  
-RUN pip3 install --no-cache -U $(pip freeze | cut -d '=' -f 1)      
 
 RUN sh get_html.sh
