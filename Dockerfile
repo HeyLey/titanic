@@ -18,11 +18,10 @@ WORKDIR ${HOME}
 COPY requirements.txt /${HOME}
 COPY get_html.sh /${HOME}
 COPY titanic_kernel.ipynb /${HOME}
-COPY get_data.sh /${HOME}
-COPY submit.sh /${HOME}
+COPY data/test.csv /${HOME}
+COPY data/train.csv /${HOME}
 
 RUN pip3 install --no-cache -r requirements.txt  
 RUN pip3 install --no-cache -U $(pip freeze | cut -d '=' -f 1)      
 
 RUN sh get_html.sh
-RUN sh get_data.sh
