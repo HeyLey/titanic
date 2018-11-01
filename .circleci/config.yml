@@ -23,7 +23,7 @@ jobs:
             mkdir .kaggle
             mv kaggle.json .kaggle
             sh get_data.sh
-            jupyter-nbconvert --ExecutePreprocessor.kernel_name=python3 --execute titanic.ipynb
+            jupyter-nbconvert --ExecutePreprocessor.kernel_name=python3 --execute titanic_kernel.ipynb
             sh submit.sh
             sh get_html.sh
           paths:
