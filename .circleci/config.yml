@@ -1,0 +1,33 @@
+version: 2
+jobs: 
+  build: 
+    working_directory: ~/titanic
+    docker: 
+      - image: circleci/python:3.7.0 
+    steps:
+      - checkout 
+      - run: 
+          name: install dependencies
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install -r requirements.txt
+       
+      - run:
+          name: kaggle
+          command: |
+            . venv/bin/activate
+            export KAGGLE_USERNAME
+            export KAGGLE_KEY
+            echo "{"username":\"${KAGGLE_USERNAME}\","key":\"${KAGGLE_KEY}\}" > kaggle.json
+            mkdir .kaggle
+            mv kaggle.json .kaggle
+            sh get_data.sh
+            jupyter-nbconvert --ExecutePreprocessor.kernel_name=python3 --execute titanic.ipynb
+            sh submit.sh
+            sh get_html.sh
+          paths:
+            - "venv"
+      - store_artifacts: 
+          path: ~/titanic/titanic.html
+          destination: titanic.html
