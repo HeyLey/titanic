@@ -10,3 +10,4 @@ seaborn==0.8.1
 Markdown==2.6.11
 xgboost==0.80
 urllib3==1.21.1
+catboost==0.10.4.1
