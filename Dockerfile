@@ -1,4 +1,4 @@
-FROM python:3.6
+FROM python:3.5.1
 
 RUN pip install --no-cache --upgrade pip && \
     pip install --no-cache notebook
